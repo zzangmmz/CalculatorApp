@@ -7,7 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CalculatorViewController: UIViewController {
+    private let calculatorView = CalculatorView()
+    
+    override func loadView() {
+        view = calculatorView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
