@@ -1,6 +1,6 @@
 import UIKit
 
-class CalculatorButton: UIButton {
+final class CalculatorButton: UIButton {
     init(_ color: UIColor, _ text: String) {
         super.init(frame: .zero)
         self.backgroundColor = color
