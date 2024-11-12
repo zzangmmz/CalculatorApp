@@ -14,6 +14,7 @@ class CalculatorView: UIView {
         super.init(frame: frame)
         
         setUI()
+        setSubviews()
         setConstraints()
     }
     
@@ -28,10 +29,14 @@ class CalculatorView: UIView {
     func setConstraints() {
         printLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            printLabel.leadingAnchor.constraint(equalTo: self.superview!.leadingAnchor, constant: 30),
-            printLabel.trailingAnchor.constraint(equalTo: self.superview!.trailingAnchor, constant: -30),
-            printLabel.topAnchor.constraint(equalTo: self.superview!.topAnchor, constant: 200),
+            printLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            printLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            printLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
             printLabel.heightAnchor.constraint(equalToConstant: 100)
         ])
+    }
+    
+    func setSubviews() {
+        self.addSubview(printLabel)
     }
 }
