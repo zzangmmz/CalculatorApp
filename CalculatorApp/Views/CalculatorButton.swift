@@ -18,6 +18,6 @@ final class CalculatorButton: UIButton {
         self.titleLabel?.font = .boldSystemFont(ofSize: 30)
         self.frame.size.height = 80
         self.frame.size.width = 80
-//        self.layer.cornerRadius = 40
+        self.layer.cornerRadius = 40
     }
 }
