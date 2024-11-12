@@ -15,6 +15,7 @@ final class CalculatorView: UIView {
     private let eightButton = CalculatorButton(.numberColor, "8")
     private let nineButton = CalculatorButton(.numberColor, "9")
     private let addButton = CalculatorButton(.numberColor, "+")
+    private lazy var sevenToNineStackView = makeHorizontalStackView([sevenButton, eightButton, nineButton, addButton])
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,23 +31,37 @@ final class CalculatorView: UIView {
     
     func setUI() {
         self.backgroundColor = .black
-        
-        let sevenToNineStackView = HorizontalStackView([sevenButton, eightButton, nineButton, addButton])
-        [sevenToNineStackView].forEach { addSubview($0) }
     }
     
     func setConstraints() {
         printLabel.translatesAutoresizingMaskIntoConstraints = false
+        sevenToNineStackView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             printLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
             printLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
             printLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
-            printLabel.heightAnchor.constraint(equalToConstant: 100)
+            printLabel.heightAnchor.constraint(equalToConstant: 100),
+            
+            sevenToNineStackView.heightAnchor.constraint(equalToConstant: 80),
+            sevenToNineStackView.topAnchor.constraint(equalTo: printLabel.bottomAnchor, constant: 60),
+            sevenToNineStackView.widthAnchor.constraint(equalToConstant: 350),
+            sevenToNineStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
     
     func setSubviews() {
-        self.addSubview(printLabel)
+        [printLabel, sevenToNineStackView].forEach { addSubview($0) }
+    }
+    
+    func makeHorizontalStackView(_ views: [UIView]) -> UIStackView {
+        let stview = UIStackView()
+        stview.axis = .horizontal
+        stview.backgroundColor = .black
+        stview.spacing = 10
+        stview.distribution = .fillEqually
+        views.forEach { stview.addArrangedSubview($0) }
+        return stview
     }
 }
 
