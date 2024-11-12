@@ -14,25 +14,25 @@ final class CalculatorView: UIView {
     private lazy var sevenButton = CalculatorButton(.numberColor, "7")
     private lazy var eightButton = CalculatorButton(.numberColor, "8")
     private lazy var nineButton = CalculatorButton(.numberColor, "9")
-    private lazy var addButton = CalculatorButton(.numberColor, "+")
+    private lazy var addButton = CalculatorButton(.orange, "+")
     private lazy var sevenToNineStackView = makeHorizontalStackView([sevenButton, eightButton, nineButton, addButton])
     
     private lazy var fourButton = CalculatorButton(.numberColor, "4")
     private lazy var fiveButton = CalculatorButton(.numberColor, "5")
     private lazy var sixButton = CalculatorButton(.numberColor, "6")
-    private lazy var subtractButton = CalculatorButton(.numberColor, "-")
+    private lazy var subtractButton = CalculatorButton(.orange, "-")
     private lazy var fourToSixStackView = makeHorizontalStackView([fourButton, fiveButton, sixButton, subtractButton])
     
     private lazy var threeButton = CalculatorButton(.numberColor, "3")
     private lazy var twoButton = CalculatorButton(.numberColor, "2")
     private lazy var oneButton = CalculatorButton(.numberColor, "1")
-    private lazy var multipleButton = CalculatorButton(.numberColor, "*")
+    private lazy var multipleButton = CalculatorButton(.orange, "*")
     private lazy var oneToThreeStackView = makeHorizontalStackView([threeButton, twoButton, oneButton, multipleButton])
     
-    private lazy var acButton = CalculatorButton(.numberColor, "AC")
+    private lazy var acButton = CalculatorButton(.orange, "AC")
     private lazy var zeroButton = CalculatorButton(.numberColor, "0")
-    private lazy var equalButton = CalculatorButton(.numberColor, "=")
-    private lazy var divideButton = CalculatorButton(.numberColor, "/")
+    private lazy var equalButton = CalculatorButton(.orange, "=")
+    private lazy var divideButton = CalculatorButton(.orange, "/")
     private lazy var zeroStackView = makeHorizontalStackView([acButton, zeroButton, equalButton, divideButton])
     
     private lazy var totalStackView: UIStackView = {
