@@ -1,6 +1,6 @@
 import UIKit
 
-class CalculatorView: UIView {
+final class CalculatorView: UIView {
     private lazy var printLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
