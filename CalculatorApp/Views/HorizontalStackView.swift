@@ -1,13 +1,15 @@
 import UIKit
 
 final class HorizontalStackView: UIStackView {
-    init() {
+    init(_ views: [UIView]) {
         super.init(frame: .zero)
         
         self.axis = .horizontal
         self.backgroundColor = .black
         self.spacing = 10
         self.distribution = .fillEqually
+        
+        views.forEach { addArrangedSubview($0) }
         
         self.translatesAutoresizingMaskIntoConstraints = false
         self.heightAnchor.constraint(equalToConstant: 80).isActive = true
