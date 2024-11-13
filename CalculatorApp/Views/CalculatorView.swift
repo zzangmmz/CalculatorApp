@@ -5,7 +5,7 @@ final class CalculatorView: UIView {
     private lazy var printLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.text = "12345"
+        label.text = "0"
         label.textAlignment = .right
         label.font = .systemFont(ofSize: 60, weight: .bold)
         return label
@@ -53,14 +53,14 @@ final class CalculatorView: UIView {
         ])
     }
     
-    private func makeHorizontalStackView(_ labels: [String]) -> UIStackView {
+    private func makeHorizontalStackView(_ titles: [String]) -> UIStackView {
         let stview = UIStackView()
         stview.axis = .horizontal
         stview.backgroundColor = .black
         stview.spacing = 10
         stview.distribution = .fillEqually
         stview.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        labels.forEach { stview.addArrangedSubview(CalculatorButton($0)) }
+        titles.forEach { stview.addArrangedSubview(CalculatorButton($0)) }
         return stview
     }
     

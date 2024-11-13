@@ -1,10 +1,10 @@
 import UIKit
 
 final class CalculatorButton: UIButton {
-    init(_ text: String) {
+    init(_ title: String) {
         super.init(frame: .zero)
-        self.backgroundColor = Int(text) != nil ? .numberColor : .orange
-        self.setTitle(text, for: .normal)
+        self.backgroundColor = Int(title) != nil ? .numberColor : .orange
+        self.setTitle(title, for: .normal)
         
         setup()
     }
