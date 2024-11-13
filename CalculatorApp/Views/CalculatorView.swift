@@ -60,7 +60,11 @@ final class CalculatorView: UIView {
         stview.spacing = 10
         stview.distribution = .fillEqually
         stview.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        titles.forEach { stview.addArrangedSubview(CalculatorButton($0)) }
+        titles.forEach {
+            let button = CalculatorButton($0)
+            button.addTarget(self, action: #selector(buttonTouched), for: .touchUpInside)
+            stview.addArrangedSubview(button)
+        }
         return stview
     }
     
@@ -72,6 +76,14 @@ final class CalculatorView: UIView {
         stview.distribution = .fillEqually
         stackViews.forEach { stview.addArrangedSubview($0) }
         return stview
+    }
+    
+    @objc func buttonTouched(_ button: CalculatorButton) {
+        if Int(button.currentTitle!) != nil {
+            printLabel.text! += button.currentTitle!
+        } else {
+            print("연산자 버튼 눌림")
+        }
     }
 }
 
