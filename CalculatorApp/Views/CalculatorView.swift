@@ -80,7 +80,11 @@ final class CalculatorView: UIView {
     
     @objc func buttonTouched(_ button: CalculatorButton) {
         if Int(button.currentTitle!) != nil {
-            printLabel.text! += button.currentTitle!
+            if printLabel.text! == "0" {
+                printLabel.text! = button.currentTitle!
+            } else {
+                printLabel.text! += button.currentTitle!
+            }
         } else {
             print("연산자 버튼 눌림")
         }
