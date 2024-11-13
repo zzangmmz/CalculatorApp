@@ -1,9 +1,9 @@
 import UIKit
 
 final class CalculatorButton: UIButton {
-    init(_ color: UIColor, _ text: String) {
+    init(_ text: String) {
         super.init(frame: .zero)
-        self.backgroundColor = color
+        self.backgroundColor = Int(text) != nil ? .numberColor : .orange
         self.setTitle(text, for: .normal)
         
         setup()

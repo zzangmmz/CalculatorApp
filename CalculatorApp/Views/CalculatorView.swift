@@ -11,12 +11,11 @@ final class CalculatorView: UIView {
         return label
     }()
     
-    private lazy var topStackView = makeHorizontalStackView(createButtons(["7", "8", "9", "+"]))
-    private lazy var secondStackView = makeHorizontalStackView(createButtons(["4", "5", "6", "-"]))
-    private lazy var thirdStackView = makeHorizontalStackView(createButtons(["3", "2", "1", "*"]))
-    private lazy var bottomStackView = makeHorizontalStackView(createButtons(["AC", "0", "=", "/"]))
     private lazy var totalStackView: UIStackView = {
-        makeVerticalStackView([topStackView, secondStackView, thirdStackView, bottomStackView])
+        makeVerticalStackView([makeHorizontalStackView(["7", "8", "9", "+"]),
+                               makeHorizontalStackView(["4", "5", "6", "-"]),
+                               makeHorizontalStackView(["3", "2", "1", "*"]),
+                               makeHorizontalStackView(["AC", "0", "=", "/"])])
     }()
     
     override init(frame: CGRect) {
@@ -54,21 +53,14 @@ final class CalculatorView: UIView {
         ])
     }
     
-    private func createButtons(_ labels: [String]) -> [CalculatorButton] {
-        return labels.map { label in
-            let color: UIColor = Int(label) != nil ? .numberColor : .orange
-            return CalculatorButton(color, label)
-        }
-    }
-    
-    private func makeHorizontalStackView(_ views: [UIView]) -> UIStackView {
+    private func makeHorizontalStackView(_ labels: [String]) -> UIStackView {
         let stview = UIStackView()
         stview.axis = .horizontal
         stview.backgroundColor = .black
         stview.spacing = 10
         stview.distribution = .fillEqually
         stview.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        views.forEach { stview.addArrangedSubview($0) }
+        labels.forEach { stview.addArrangedSubview(CalculatorButton($0)) }
         return stview
     }
     
