@@ -22,6 +22,10 @@
 ![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 
 
+실행 화면
+-----------
+![](https://velog.velcdn.com/images/myungjilee/post/0bc9e1d1-f2ee-438d-b2a4-9e6e118f77c2/image.gif)
+
 커밋 컨벤션
 -------------
 - feat : Screen, Component, 기능 추가 및 수정 (큰 변경사항 위주) / 이미지 추가
