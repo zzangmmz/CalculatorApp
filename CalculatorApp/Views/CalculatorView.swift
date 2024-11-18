@@ -84,7 +84,7 @@ final class CalculatorView: UIView {
         return button
     }
     
-    @objc func buttonTouched(_ button: CalculatorButton) {
+    @objc func buttonTouched(_ button: UIButton) {
         let title = button.currentTitle!
         if title == "AC" {
             printLabel.text! = "0"
