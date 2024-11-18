@@ -21,8 +21,7 @@ final class CalculatorView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setSubviews()
+        configureUI()
         setConstraints()
     }
     
@@ -30,11 +29,8 @@ final class CalculatorView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setUI() {
+    private func configureUI() {
         self.backgroundColor = .black
-    }
-    
-    private func setSubviews() {
         [printLabel, totalStackView].forEach { addSubview($0) }
     }
     
