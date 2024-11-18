@@ -88,18 +88,19 @@ final class CalculatorView: UIView {
         return button
     }
     
-    @objc func handleButtonTapped(_ sender: UIButton) {
-        let title = sender.currentTitle!
-        if title == "AC" {
-            expressionLabel.text! = "0"
-        } else if title == "=" {
-            expressionLabel.text! = calculateExpression(expression: expressionLabel.text!) ?? "Error"
-        } else {
-            if expressionLabel.text! == "0" {
-                expressionLabel.text! = title
-            } else {
-                expressionLabel.text! += title
-            }
+    @objc func handleButtonTapped(_ button: UIButton) {
+        guard let title = button.currentTitle else { return }
+        currentExpression = handleButtonAction(for: title, currentExpression: currentExpression)
+    }
+    
+    private func handleButtonAction(for title: String, currentExpression: String) -> String {
+        switch title {
+        case "AC":
+            return "0"
+        case "=":
+            return calculateExpression(expression: currentExpression) ?? "Error"
+        default:
+            return currentExpression == "0" ? title : currentExpression + title
         }
     }
     
