@@ -93,7 +93,7 @@ final class CalculatorView: UIView {
         if title == "AC" {
             expressionLabel.text! = "0"
         } else if title == "=" {
-            expressionLabel.text! = String(calculate(expression: expressionLabel.text!)!)
+            expressionLabel.text! = String(calculateExpression(expression: expressionLabel.text!)!)
         } else {
             if expressionLabel.text! == "0" {
                 expressionLabel.text! = title
@@ -103,7 +103,7 @@ final class CalculatorView: UIView {
         }
     }
     
-    private func calculate(expression: String) -> Int? {
+    private func calculateExpression(expression: String) -> Int? {
         let expression = NSExpression(format: expression)
         if let result = expression.expressionValue(with: nil, context: nil) as? Int {
             return result
