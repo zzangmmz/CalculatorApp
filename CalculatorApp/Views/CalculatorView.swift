@@ -88,8 +88,8 @@ final class CalculatorView: UIView {
         return button
     }
     
-    @objc func handleButtonTapped(_ button: UIButton) {
-        let title = button.currentTitle!
+    @objc func handleButtonTapped(_ sender: UIButton) {
+        let title = sender.currentTitle!
         if title == "AC" {
             expressionLabel.text! = "0"
         } else if title == "=" {
