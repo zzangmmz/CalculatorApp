@@ -12,7 +12,7 @@ final class CalculatorView: UIView {
     }()
     
     private lazy var totalStackView: UIStackView = {
-        makeVerticalStackView([createHorizontalStackView(["7", "8", "9", "+"]),
+        createVerticalStackView([createHorizontalStackView(["7", "8", "9", "+"]),
                                createHorizontalStackView(["4", "5", "6", "-"]),
                                createHorizontalStackView(["3", "2", "1", "*"]),
                                createHorizontalStackView(["AC", "0", "=", "/"])])
@@ -63,7 +63,7 @@ final class CalculatorView: UIView {
         return stview
     }
     
-    private func makeVerticalStackView(_ stackViews: [UIStackView]) -> UIStackView {
+    private func createVerticalStackView(_ stackViews: [UIStackView]) -> UIStackView {
         let stview = UIStackView()
         stview.axis = .vertical
         stview.backgroundColor = .black
