@@ -117,3 +117,8 @@ final class CalculatorView: UIView {
 extension UIColor {
     static let numberColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
 }
+
+@available(iOS 17.0, *)
+#Preview {
+    CalculatorView()
+}
