@@ -22,7 +22,6 @@ final class CalculatorView: UIView {
         super.init(frame: frame)
         
         configureUI()
-        setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -32,9 +31,10 @@ final class CalculatorView: UIView {
     private func configureUI() {
         self.backgroundColor = .black
         [printLabel, totalStackView].forEach { addSubview($0) }
+        configureConstraints()
     }
     
-    private func setConstraints() {
+    private func configureConstraints() {
         [printLabel, totalStackView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         
         NSLayoutConstraint.activate([
