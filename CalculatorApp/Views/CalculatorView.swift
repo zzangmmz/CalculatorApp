@@ -12,15 +12,14 @@ final class CalculatorView: UIView {
     }()
     
     private lazy var totalStackView: UIStackView = {
-        makeVerticalStackView([makeHorizontalStackView(["7", "8", "9", "+"]),
-                               makeHorizontalStackView(["4", "5", "6", "-"]),
-                               makeHorizontalStackView(["3", "2", "1", "*"]),
-                               makeHorizontalStackView(["AC", "0", "=", "/"])])
+        makeVerticalStackView([createHorizontalStackView(["7", "8", "9", "+"]),
+                               createHorizontalStackView(["4", "5", "6", "-"]),
+                               createHorizontalStackView(["3", "2", "1", "*"]),
+                               createHorizontalStackView(["AC", "0", "=", "/"])])
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configureUI()
     }
     
@@ -49,7 +48,7 @@ final class CalculatorView: UIView {
         ])
     }
     
-    private func makeHorizontalStackView(_ titles: [String]) -> UIStackView {
+    private func createHorizontalStackView(_ titles: [String]) -> UIStackView {
         let stview = UIStackView()
         stview.axis = .horizontal
         stview.backgroundColor = .black
