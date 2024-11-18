@@ -84,11 +84,11 @@ final class CalculatorView: UIView {
         button.tintColor = .white
         button.frame.size = CGSize(width: 80, height: 80)
         button.layer.cornerRadius = 40
-        button.addTarget(self, action: #selector(buttonTouched), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleButtonTapped), for: .touchUpInside)
         return button
     }
     
-    @objc func buttonTouched(_ button: UIButton) {
+    @objc func handleButtonTapped(_ button: UIButton) {
         let title = button.currentTitle!
         if title == "AC" {
             expressionLabel.text! = "0"
