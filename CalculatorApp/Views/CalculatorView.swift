@@ -106,11 +106,7 @@ final class CalculatorView: UIView {
     
     private func calculateExpression(expression: String) -> String? {
         let expression = NSExpression(format: expression)
-        if let result = expression.expressionValue(with: nil, context: nil) as? String {
-            return result
-        } else {
-            return nil
-        }
+        return expression.expressionValue(with: nil, context: nil) as? String
     }
 }
 
@@ -118,7 +114,7 @@ extension UIColor {
     static let numberColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
 }
 
-@available(iOS 17.0, *)
-#Preview {
-    CalculatorView()
-}
+//@available(iOS 17.0, *)
+//#Preview {
+//    CalculatorView()
+//}
