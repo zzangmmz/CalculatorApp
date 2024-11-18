@@ -2,14 +2,18 @@ import UIKit
 
 final class CalculatorView: UIView {
     // MARK: - UI 컴포넌트 세팅
-    private lazy var printLabel: UILabel = {
+    private lazy var expressionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.text = "0"
+        label.text = currentExpression
         label.textAlignment = .right
         label.font = .systemFont(ofSize: 60, weight: .bold)
         return label
     }()
+    
+    private var currentExpression = "0" {
+        didSet { expressionLabel.text = currentExpression }
+    }
     
     private lazy var totalStackView: UIStackView = {
         createVerticalStackView([createHorizontalStackView(["7", "8", "9", "+"]),
@@ -29,22 +33,22 @@ final class CalculatorView: UIView {
     
     private func configureUI() {
         self.backgroundColor = .black
-        [printLabel, totalStackView].forEach { addSubview($0) }
+        [expressionLabel, totalStackView].forEach { addSubview($0) }
         configureConstraints()
     }
     
     private func configureConstraints() {
-        [printLabel, totalStackView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        [expressionLabel, totalStackView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         
         NSLayoutConstraint.activate([
-            printLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
-            printLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
-            printLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
-            printLabel.heightAnchor.constraint(equalToConstant: 100),
+            expressionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            expressionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            expressionLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
+            expressionLabel.heightAnchor.constraint(equalToConstant: 100),
             
             totalStackView.widthAnchor.constraint(equalToConstant: 350),
             totalStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            totalStackView.topAnchor.constraint(equalTo: printLabel.bottomAnchor, constant: 60)
+            totalStackView.topAnchor.constraint(equalTo: expressionLabel.bottomAnchor, constant: 60)
         ])
     }
     
@@ -87,14 +91,14 @@ final class CalculatorView: UIView {
     @objc func buttonTouched(_ button: UIButton) {
         let title = button.currentTitle!
         if title == "AC" {
-            printLabel.text! = "0"
+            expressionLabel.text! = "0"
         } else if title == "=" {
-            printLabel.text! = String(calculate(expression: printLabel.text!)!)
+            expressionLabel.text! = String(calculate(expression: expressionLabel.text!)!)
         } else {
-            if printLabel.text! == "0" {
-                printLabel.text! = title
+            if expressionLabel.text! == "0" {
+                expressionLabel.text! = title
             } else {
-                printLabel.text! += title
+                expressionLabel.text! += title
             }
         }
     }
