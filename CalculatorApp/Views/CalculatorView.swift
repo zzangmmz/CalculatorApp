@@ -56,8 +56,7 @@ final class CalculatorView: UIView {
         stview.distribution = .fillEqually
         stview.heightAnchor.constraint(equalToConstant: 80).isActive = true
         titles.forEach {
-            let button = CalculatorButton($0)
-            button.addTarget(self, action: #selector(buttonTouched), for: .touchUpInside)
+            let button = createCalculatorButton(title: $0)
             stview.addArrangedSubview(button)
         }
         return stview
@@ -71,6 +70,18 @@ final class CalculatorView: UIView {
         stview.distribution = .fillEqually
         stackViews.forEach { stview.addArrangedSubview($0) }
         return stview
+    }
+    
+    private func createCalculatorButton(title: String) -> UIButton {
+        let button = UIButton(type: .system)
+        button.backgroundColor = Int(title) != nil ? .numberColor : .orange
+        button.setTitle(title, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 30)
+        button.tintColor = .white
+        button.frame.size = CGSize(width: 80, height: 80)
+        button.layer.cornerRadius = 40
+        button.addTarget(self, action: #selector(buttonTouched), for: .touchUpInside)
+        return button
     }
     
     @objc func buttonTouched(_ button: CalculatorButton) {
