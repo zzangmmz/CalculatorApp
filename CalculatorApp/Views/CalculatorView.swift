@@ -17,9 +17,9 @@ final class CalculatorView: UIView {
     
     private lazy var totalStackView: UIStackView = {
         createVerticalStackView([createHorizontalStackView(["7", "8", "9", "+"]),
-                               createHorizontalStackView(["4", "5", "6", "-"]),
-                               createHorizontalStackView(["3", "2", "1", "*"]),
-                               createHorizontalStackView(["AC", "0", "=", "/"])])
+                                 createHorizontalStackView(["4", "5", "6", "-"]),
+                                 createHorizontalStackView(["3", "2", "1", "*"]),
+                                 createHorizontalStackView(["AC", "0", "=", "/"])])
     }()
     
     override init(frame: CGRect) {
@@ -106,7 +106,11 @@ final class CalculatorView: UIView {
     
     private func calculateExpression(expression: String) -> String? {
         let expression = NSExpression(format: expression)
-        return expression.expressionValue(with: nil, context: nil) as? String
+        if let result = expression.expressionValue(with: nil, context: nil) as? Int {
+            return String(result)
+        } else {
+            return nil
+        }
     }
 }
 
